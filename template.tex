@@ -1,0 +1,167 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stylish Curriculum Vitae
+% LaTeX Template
+% Version 1.1 (September 10, 2021)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Stefano (https://www.kindoblue.nl)
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, oneside, final]{scrartcl} % Paper options using the scrartcl class
+
+\usepackage{scrlayer-scrpage} % Provides headers and footers configuration
+\usepackage{titlesec} % Allows creating custom \section's
+\usepackage{marvosym} % Allows the use of symbols
+\usepackage{tabularx,colortbl} % Advanced table configurations
+\usepackage{ebgaramond} % Use the EB Garamond font
+
+\usepackage{microtype} % To enable letterspacing
+%\pdfprotrudechars=2
+%\pdfadjustspacing=2
+%\newfontfeature{Microtype}{protrusion=default;expansion=default;}
+%\defaultfontfeatures{Microtype,Ligatures=TeX}
+% 
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule] % Section formatting
+
+\pagestyle{scrheadings} % Print the headers and footers on all pages
+
+\addtolength{\voffset}{-0.5in} % Adjust the vertical offset - less whitespace at the top of the page
+\addtolength{\textheight}{3cm} % Adjust the text height - less whitespace at the bottom of the page
+
+\newcommand{\gray}{\rowcolor[gray]{.90}} % Custom highlighting for the work experience and education sections
+
+%----------------------------------------------------------------------------------------
+%	FOOTER SECTION
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\headfont}{\normalfont\rmfamily\scshape} % Font settings for footer
+
+\cofoot{
+\fontsize{12.5}{17}\selectfont % Letter spacing and font size
+
+%\ifoot*{\the\footheight\quad\smash{\rule{2px}{\footheight}}}
+
+\textls[150]{Lisbon {\large\textperiodcentered} Portugal 12345}\\ % Your mailing address
+{\Large\Letter} \textls[150]{andre@gaudencio.pt \ {\Large\Telefon} (351) 938458775} % Your email address and phone number
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{center} % Center everything in the document
+
+%----------------------------------------------------------------------------------------
+%	HEADER SECTION
+%----------------------------------------------------------------------------------------
+
+{\fontsize{36}{36}\selectfont\scshape\textls[200]{André Gaudêncio}} % Your name at the top
+
+\vspace{1cm} % Extra whitespace after the large name at the top
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVE
+%----------------------------------------------------------------------------------------
+
+\section{Objective}
+
+%A position in the field of computers with special interests in business applications \\ programming, information processing, and management systems. \\
+Devops Engineer with 3+ years of technical experience in CI/CD pipelines and AWS infrastructure design DevOps using Terraform as IaC.
+
+%Strive to continuously learn and acquire new skills.
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Period & \textbf{January 2020 --- Present}\\
+\gray Employer & \textbf{One.Network} \hfill Lisbon, Portugal\\
+\gray Job Title & \textbf{DevOps Engineer}\\
+\end{tabularx}
+\small {
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item Managed migration of infrastructure resources to IaC (Terraform).
+  \item Added centralised logging throughout services, first to Cloudwatch, then to Elasticsearch.
+  \item Migrated entire infrastructure to another data centre (AWS).
+  \item Retired old servers.
+  \item Migrated the backend services to ECS, allowing for better availability and scalability.
+  \item Retired the use of Amd64 underlying machines(EC2), upgrading to Arm64 architecture, saving a total of 15\% in monthly costs
+  \item Developed Jenkins integration in several projects across various hosting zones.
+\end{itemize}
+}
+\vspace{10pt}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Period & \textbf{November 2018 --- January 2020}\\
+\gray Employer & \textbf{One.Network} \hfill Lisbon, Portugal\\
+\gray Job Title & \textbf{Full-stack developer}\\
+\gray Languages & \textbf{Java, Javascript, PSQL}\\
+\end{tabularx}
+\small {
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item Developed backend services that correlate data between various sources, aggregating all in a PostgreSQL database.
+  \item Participated in the development of a well established product on a full stack level.
+  \item Created a project for user platform metrics, which allowed the management team to optimise the product sales based on usage, and in turn leading to a 20\% increase in active users.
+  \item Participated in the creation of a new CICD pipeline, allowing the release processes to flow significantly smoother.
+\end{itemize}
+}
+
+%\vspace{12pt}
+
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\gray Period & \textbf{September 2015 --- September 2018}\\
+\gray Degree & \textbf{Bachelor of IT Engineering}\\
+\gray University & \textbf{ISEL} \hfill Lisbon, Portugal\\
+%& Extra information about degree
+\end{tabularx}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Skills}
+
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+Computer Languages & Java, Javascript, Go, Bash, Python \\
+Protocols \& APIs & XML, JSON, SOAP, REST \\
+Databases & PostgreSQL, DynamoDB, MySQL, Microsoft SQL \\
+Tools & Git, Terraform, Docker, Vim \\
+Cloud Providers & AWS \\
+Cloud Resources & VPC, ECS, ALB, EC2, ECR, Lambda, Route53, ...
+\end{tabular}
+
+%----------------------------------------------------------------------------------------
+
+\end{center}
+
+%\vspace{1.5cm}
+\vspace{12pt}
+\footnotesize {
+{Version: \number \month .\number\year.verSubstitution}
+}
+
+\end{document}
