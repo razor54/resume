@@ -1,0 +1,481 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2015 Jan Küster
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+
+%============================================================================%
+%
+%	DOCUMENT DEFINITION
+%
+%============================================================================%
+
+%we use article class because we want to fully customize the page and dont use a cv template
+\documentclass[10pt,A4]{article}	
+
+
+%----------------------------------------------------------------------------------------
+%	ENCODING
+%----------------------------------------------------------------------------------------
+
+%we use utf8 since we want to build from any machine
+\usepackage[utf8]{inputenc}		
+
+%----------------------------------------------------------------------------------------
+%	LOGIC
+%----------------------------------------------------------------------------------------
+
+% provides \isempty test
+\usepackage{xifthen}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% some tex-live fonts - choose your own
+
+%\usepackage[defaultsans]{droidsans}
+%\usepackage[default]{comfortaa}
+%\usepackage{cmbright}
+%\usepackage[default]{raleway}
+\usepackage{fetamont}
+%\usepackage[default]{gillius}
+%\usepackage[light,math]{iwona}
+%\usepackage[thin]{roboto} 
+
+% set font default
+\renewcommand*\familydefault{\sfdefault} 	
+\usepackage[T1]{fontenc}
+
+% more font size definitions
+\usepackage{moresize}		
+
+
+%----------------------------------------------------------------------------------------
+%	PAGE LAYOUT  DEFINITIONS
+%----------------------------------------------------------------------------------------
+
+%debug page outer frames
+%\usepackage{showframe}			
+
+
+%define page styles using geometry
+\usepackage[a4paper]{geometry}		
+
+% for example, change the margins to 2 inches all round
+\geometry{top=1.25cm, bottom=-.6cm, left=1.5cm, right=1.5cm} 	
+
+%use customized header
+\usepackage{fancyhdr}				
+\pagestyle{fancy}
+
+%less space between header and content
+\setlength{\headheight}{-5pt}		
+
+
+%customize entries left, center and right
+%\lhead{}
+%\chead{}
+%\rhead{}
+
+
+%indentation is zero
+\setlength{\parindent}{0mm}
+
+%----------------------------------------------------------------------------------------
+%	TABLE /ARRAY DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for layouting tables
+\usepackage{multicol}			
+\usepackage{multirow}
+
+%extended aligning of tabular cells
+\usepackage{array}
+
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+
+%----------------------------------------------------------------------------------------
+%	GRAPHICS DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for header image
+\usepackage{graphicx}
+
+%for floating figures
+\usepackage{wrapfig}
+\usepackage{float}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
+
+%for drawing graphics		
+\usepackage{tikz}				
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+
+%----------------------------------------------------------------------------------------
+%	Color DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+\usepackage{color}
+
+%accent color
+\definecolor{sectcol}{RGB}{0,150,255}
+
+%dark background color
+\definecolor{bgcol}{RGB}{110,110,110}
+
+%light background / accent color
+\definecolor{softcol}{RGB}{225,225,225}
+
+
+%----------------------------------------------------------------------------------------
+%	INLINE ITEMS SUPPORT
+%----------------------------------------------------------------------------------------
+\usepackage[inline]{enumitem}
+
+\usepackage{tasks}
+%\usepackage{amssymb}
+
+%\settasks{label-format={\color{green!70!black}\large\bfseries}, label-align=center, label-offset={10mm}, label-width={10mm}, item-indent={5mm}, item-format={\scshape\small}, column-sep={3mm}, after-item-skip=-1mm, after-skip={3mm}
+%}
+
+
+\settasks{label-format={\color{softcol}\large\bfseries}, label-align=center, label-offset={10mm}, label-width={10mm}, item-indent={5mm}, item-format={\scshape\small}, column-sep={3mm}, after-item-skip=-1mm, after-skip={3mm}
+}
+
+
+
+%============================================================================%
+%
+%
+%	DEFINITIONS
+%
+%
+%============================================================================%
+
+%----------------------------------------------------------------------------------------
+% 	HEADER
+%----------------------------------------------------------------------------------------
+
+% remove top header line
+\renewcommand{\headrulewidth}{0pt} 
+
+%remove botttom header line
+\renewcommand{\footrulewidth}{0pt}	  	
+
+%remove pagenum
+\renewcommand{\thepage}{}	
+
+%remove section num		
+\renewcommand{\thesection}{}			
+
+%----------------------------------------------------------------------------------------
+% 	ARROW GRAPHICS in Tikz
+%----------------------------------------------------------------------------------------
+
+% a six pointed arrow poiting to the left
+\newcommand{\tzlarrow}{(0,0) -- (0.2,0) -- (0.3,0.2) -- (0.2,0.4) -- (0,0.4) -- (0.1,0.2) -- cycle;}	
+
+% include the left arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\larrow}[1]
+{\begin{tikzpicture}[scale=0.58]
+	 \filldraw[fill=#1!100,draw=#1!100!black]  \tzlarrow
+ \end{tikzpicture}
+}
+
+% a six pointed arrow poiting to the right
+\newcommand{\tzrarrow}{ (0,0.2) -- (0.1,0) -- (0.3,0) -- (0.2,0.2) -- (0.3,0.4) -- (0.1,0.4) -- cycle;}
+
+% include the right arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\rarrow}
+{\begin{tikzpicture}[scale=0.7]
+	\filldraw[fill=sectcol!100,draw=sectcol!100!black] \tzrarrow
+ \end{tikzpicture}
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	custom sections
+%----------------------------------------------------------------------------------------
+
+% create a coloured box with arrow and title as cv section headline
+% param 1: section title
+%
+\newcommand{\cvsection}[1]
+{
+	\begin{center}
+		\large\textcolor{sectcol}{\textbf{#1}}
+	\end{center}
+}
+
+%create a coloured arrow with title as cv meta section section
+% param 1: meta section title
+%
+\newcommand{\metasection}[2]
+{
+%\begin{tabular*}{1\textwidth}{r r}
+\footnotesize{#2} \hspace*{\fill} \footnotesize{#1}\\[1pt]
+%\end{tabular*}
+}
+
+%----------------------------------------------------------------------------------------
+%	 CV EVENT
+%----------------------------------------------------------------------------------------
+
+% creates a stretched box as cv entry headline followed by some paragraphs about 
+% the work you did
+% param 1:	event time i.e. 2014 or 2011-2014 etc.
+% param 2:	event name (what did you do?)
+% param 3:	institution (where did you work / study)
+% param 4:	list of paragraphs
+%
+\newcommand{\cvevent}[4]
+{
+
+\begin{tabular*}{1\textwidth}{p{13.6cm}  x{3.9cm}}
+	\textbf{#2} - \textcolor{bgcol}{#3} &   \vspace{2.5pt}\textcolor{sectcol}{#1}
+\end{tabular*}
+
+\vspace{-8pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+	\foreach \desc in {#4}{
+		$\cdot$ \desc\\[3pt]
+	}
+	
+\vspace{3pt}
+}
+
+% creates a stretched box as 
+\newcommand{\cveventmeta}[2]
+{
+	\mbox{\mystrut \hspace{87pt}\textit{#1}}\\
+	#2
+}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM STRUT FOR EMPTY BOXES
+%----------------------------------------- -----------------------------------------------
+\newcommand{\mystrut}{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM LOREM IPSUM
+%----------------------------------------------------------------------------------------
+\newcommand{\lorem}
+{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.}
+
+
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT CONTENT
+%
+%
+%
+%============================================================================%
+\begin{document}
+
+
+%use our custom fancy header definitions
+\pagestyle{fancy}	
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	HEADER IMAGE
+%----------------------------------------------------------------------------------------
+
+%\begin{figure}[H]
+%\begin{flushright}
+%	\includegraphics[trim= 320 130 460 210,clip,width=0.2\linewidth]{myfoto.jpg}	%trimming relative to image size!
+%\end{flushright}
+%\end{figure}
+
+
+%---------------------------------------------------------------------------------------
+%	TITLE HEADLINE
+%----------------------------------------------------------------------------------------
+\vspace{-8pt}
+\begin{center}
+	\HUGE \textsc{André Gaudêncio} \textcolor{sectcol}{\rule[-1mm]{1mm}{0.9cm}} \textsc{Resume}\\[2pt]
+	\small Devops Engineer
+\end{center}
+
+
+
+\vspace{6pt}
+
+
+%---------------------------------------------------------------------------------------
+%	META SECTION
+%----------------------------------------------------------------------------------------
+\metasection{Lisbon, Portugal}{\textbf{Status:} Devops Engineer}
+\metasection{https://www.github.com/razor54}{\textbf{Fields:} Software Engineering, DevOps, Scrum} 
+\metasection{andre@gaudencio.pt}{\textbf{Techs:} Terraform, AWS, Javascript, Docker, PostgreSQL, Bash, Git, Jenkins, Github Actions}
+\metasection{+49 176 *** *** **}{\textbf{Activities:} Open Source, Fitness}
+\vspace{-2pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+
+\normalsize
+
+%---------------------------------------------------------------------------------------
+%	SUMMARAY (optional)
+%----------------------------------------------------------------------------------------
+\vspace{-6pt}
+\cvsection{Summary}
+DevOps Engineer with 3+ years of technical experience in CI/CD pipelines and AWS infrastructure design\\
+DevOps using Terraform as IaC, setting up enterprise infrastructure on Amazon Web Services like EC2 Instance,\\ ELB, EBS, S3 Bucket, Security Groups, Auto Scaling, AMI, RDS, IAM Cloud Formation & VPC services.\\
+Hands on knowledge on AWS, Linux and \emph{Devops}.
+
+
+\cvsection{Key skills}
+DevOps Engineer with 3+ years of \textbf{greatest} experience in CI/CD pipelines and AWS infrastructure design\\
+DevOps using Terraform as IaC, setting up enterprise infrastructure on Amazon Web Services like EC2 Instance,\\ ELB, EBS, S3 Bucket, Security Groups, Auto Scaling, AMI, RDS, IAM Cloud Formation \& VPC services.\\
+Hands on knowledge on AWS, Linux and Devops.
+
+\begin{enumerate*}
+  \item My first in list.
+  \item My second in list.
+\end{enumerate*}
+
+\bfseries Horizontal list with the same look as itemize.\normalfont
+\begin{tasks}[style=itemize, column-sep=-25mm, label-align=left, label-offset={2mm}, label-width={3mm}, item-indent={15mm}](6)%
+\task One
+\task Two
+\task Three
+\task Four
+\task Five
+\task Six
+\task Seven
+\task Eight
+\task Nine
+\task Ten
+\end{tasks}
+
+% Works with itemize
+This is a combined inline itemized list.
+\begin{itemize}
+    \item First item \inlineitem Second item \inlineitem Third item.
+    \item Fourth item
+    \item Fifth item
+\end{itemize}
+
+% Combined inline list
+This is a combined inline enumerated list.
+\begin{enumerate}
+    \item First item \inlineitem Second item \inlineitem Third item.
+    \item Fourth item
+    \item Fifth item
+\end{enumerate}
+
+
+%============================================================================%
+%
+%	CV SECTIONS AND EVENTS (MAIN CONTENT)
+%
+%============================================================================%
+
+%---------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+\cvsection{Experience}
+
+\cvevent{2020 - present}{Devops Engineer}{One.Network}{
+	{Managed migration of infrastructure resources to IaC (Terraform)},
+	{Added centralised logging throughout services, first to CloudWatch, then to Elasticsearch},
+	{Migrated entire infrastructure to another data centre (AWS)},
+	{Retired old servers},
+	{Migrated the backend services to ECS, allowing for better availability and scalability},
+	{Retired the use of Amd64 underlying machines(EC2), upgrading to Arm64 architecture, saving a total of 15\% in monthly costs},
+	{Developed Jenkins integration in several projects across various hosting zones}
+}
+
+%
+\cvevent{2018 - 2020}{Full-Stack Develop}{One.Network}{
+	{Developed backend services that correlate data between various sources, aggregating all in a PostgreSQL database},
+	{Participated in the development of a well established product on a full stack level},
+	{Created a project for user platform metrics, which allowed the management team to optimise the product sales based on usage, and in turn leading to a 20\% increase in active users},
+	{Participated in the creation of a new CICD pipeline, allowing the release processes to flow significantly smoother}
+}
+
+
+
+%---------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%--------------------------------------------------------------------------------------
+\cvsection{Education}
+
+\cvevent{2015 - 2018}{Bachelor in IT Engineering}{ISEL}{
+	{Lisbon, Portugal}
+}
+
+
+%---------------------------------------------------------------------------------------
+%	Projects
+%--------------------------------------------------------------------------------------
+\cvsection{Projects}
+
+\cvevent{2021}{Test project} {github url}{
+	Whatever description
+}
+
+
+\vspace{12pt}
+\footnotesize {
+{Version: \number \month .\number\year.verSubstitution}
+}
+
+
+%--------------------------------------------------------------------------------------------------
+%	ARTIFICIAL FOOTER (fancy footer cannot exceed linewidth) 
+%--------------------------------------------------------------------------------------------------
+
+\null
+\vspace*{\fill}
+\hspace{-0.25\linewidth}\colorbox{white}{\makebox[1.5\linewidth][c]{\mystrut  \textnormal{\textcolor{sectcol}{andre@gaudencio.pt} $\cdot$ \textcolor{sectcol}{github.com/razor54}}}}
+
+
+
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT END
+%
+%
+%
+%============================================================================%
+\end{document}
