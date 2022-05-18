@@ -1,5 +1,6 @@
 name: 'Generate document'
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
 defaults:
